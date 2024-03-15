@@ -8,6 +8,9 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
+  liquibase:
+    enabled: true
+    change-log: classpath:db/changelog/db.changelog-master.yaml
   datasource:
     url: jdbc:postgresql://localhost:5432/utility_db
     username: postgres
@@ -21,3 +24,8 @@ server:
 logging:
   level:
     root: INFO
+
+secrets:
+  jwt:
+    key: ${SECRET_KEY}
+    expiration: 30000
