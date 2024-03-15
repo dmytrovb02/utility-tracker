@@ -1,0 +1,41 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-utilities-table
+      author: Dima Vyshnivskyi
+      changes:
+        - createTable:
+            tableName: utilities
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: user_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    references: users(id)
+                    foreignKeyName: fk_utilities_user_id
+              - column:
+                  name: gas
+                  type: integer
+                  constraints:
+                    nullable: false
+              - column:
+                  name: water
+                  type: integer
+                  constraints:
+                    nullable: false
+              - column:
+                  name: electricity
+                  type: integer
+                  constraints:
+                    nullable: false
+              - column:
+                  name: recorded_at
+                  type: timestamp
+                  constraints:
+                    nullable: false
